@@ -9,7 +9,7 @@ import Capacitor
 public class PJAMMFileSharePlugin: CAPPlugin {
     private let implementation = PJAMMFileShare()
 
-    @objc func echo(_ call: CAPPluginCall) {
+    @objc func downloadFile(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""
         call.resolve([
             "value": implementation.echo(value)
