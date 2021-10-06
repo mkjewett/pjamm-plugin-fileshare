@@ -41,10 +41,9 @@ downloadFile(options: DownloadOptions) => any
 
 #### DownloadOptions
 
-| Prop                  | Type                |
-| --------------------- | ------------------- |
-| **`fileData_base64`** | <code>string</code> |
-| **`file`**            | <code>any</code>    |
-| **`filename`**        | <code>string</code> |
+| Prop           | Type                |
+| -------------- | ------------------- |
+| **`data`**     | <code>string</code> |
+| **`filename`** | <code>string</code> |
 
 </docgen-api>

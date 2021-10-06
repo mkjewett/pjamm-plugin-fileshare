@@ -11,7 +11,7 @@ public class PJAMMFileSharePlugin: CAPPlugin {
 
     @objc func downloadFile(_ call: CAPPluginCall) {
         
-        guard let fileData:String = call.getString("fileData_base64") else {
+        guard let fileData:String = call.getString("data") else {
             call.reject("File Data not provided")
             return
         }
@@ -21,16 +21,17 @@ public class PJAMMFileSharePlugin: CAPPlugin {
             return
         }
         
-        guard let data:Data = Data(base64Encoded: fileData) else {
-            call.reject("Unable to decode string")
-            return
-        }
+        // guard let data:Data = Data(base64Encoded: fileData) else {
+        //     call.reject("Unable to decode string")
+        //     return
+        // }
         
         var tempURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         tempURL.appendPathComponent(filename)
         
         do {
-            try data.write(to: tempURL)
+            // try data.write(to: tempURL)
+            try fileData.write(to: tempURL, atomically: true, encoding: .utf8)
         } catch {
             call.reject("Unable to write temp file")
             return;
@@ -45,7 +46,7 @@ public class PJAMMFileSharePlugin: CAPPlugin {
             
             let actView = UIActivityViewController(activityItems: [tempURL], applicationActivities: nil)
             
-            actView.setValue("Activity Path Data", forKey: "subject")
+            actView.setValue("Activity Path Data - PJAMM Cycling App", forKey: "subject")
             
             actView.completionWithItemsHandler = { (activityType, completed, _ returnedItems, activityError) in
                 if activityError != nil {

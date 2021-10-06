@@ -3,7 +3,8 @@ export interface PJAMMFileSharePlugin {
 }
 
 export interface DownloadOptions {
-  fileData_base64?: string;
-  file?: File|Blob;
+  // fileData_base64?: string;
+  // file?: File|Blob;
+  data: string;
   filename: string;
 }

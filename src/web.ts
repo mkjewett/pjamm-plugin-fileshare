@@ -4,18 +4,20 @@ import type { DownloadOptions, PJAMMFileSharePlugin } from './definitions';
 
 export class PJAMMFileShareWeb extends WebPlugin implements PJAMMFileSharePlugin {
   downloadFile(options:DownloadOptions):Promise<any> {
-    if(!options.file){
-      throw "File not provided";
+    if(!options.data){
+      throw "File data not provided";
     }
     
     if (!options.filename) {
       throw "Filename not provided";
     }
 
+    let blob:Blob = new Blob([options.data], {type: 'text/plain'})
+
     if(window.navigator.msSaveBlob) {
-      window.navigator.msSaveBlob(options.file, options.filename);
+      window.navigator.msSaveBlob(blob, options.filename);
     } else {
-      let url:string                = window.URL.createObjectURL(options.file);
+      let url:string                = window.URL.createObjectURL(blob);
       let anchor:HTMLAnchorElement  = document.createElement('a');
   
       document.body.appendChild(anchor);
