@@ -21,16 +21,10 @@ public class PJAMMFileSharePlugin: CAPPlugin {
             return
         }
         
-        // guard let data:Data = Data(base64Encoded: fileData) else {
-        //     call.reject("Unable to decode string")
-        //     return
-        // }
-        
         var tempURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         tempURL.appendPathComponent(filename)
         
         do {
-            // try data.write(to: tempURL)
             try fileData.write(to: tempURL, atomically: true, encoding: .utf8)
         } catch {
             call.reject("Unable to write temp file")
