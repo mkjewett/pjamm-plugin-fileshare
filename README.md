@@ -24,14 +24,14 @@ npx cap sync
 ### downloadFile(...)
 
 ```typescript
-downloadFile(options: DownloadOptions) => any
+downloadFile(options: DownloadOptions) => Promise<any>
 ```
 
 | Param         | Type                                                        |
 | ------------- | ----------------------------------------------------------- |
 | **`options`** | <code><a href="#downloadoptions">DownloadOptions</a></code> |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
 
 --------------------
 
